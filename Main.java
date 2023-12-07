@@ -77,195 +77,12 @@ class Reserva {
     }
 }
 
-class SistemaClientes {
-    List<Cliente> clientes;
-
-    public SistemaClientes() {
-        this.clientes = new ArrayList<>();
-    }
-
-    public void incluirCliente(Cliente cliente) {
-        clientes.add(cliente);
-    }
-
-    public void listarClientes() {
-        for (Cliente cliente : clientes) {
-            System.out.println("ID: " + cliente.id);
-            System.out.println("Nome: " + cliente.nome);
-            System.out.println("Endereço: " + cliente.endereco);
-            System.out.println("Código Postal: " + cliente.postalCode);
-            System.out.println("País: " + cliente.pais);
-            System.out.println("CPF: " + cliente.cpf);
-            System.out.println("Passaporte: " + cliente.passaporte);
-            System.out.println("Email: " + cliente.email);
-            System.out.println("Data de Nascimento: " + cliente.dataNascimento);
-            System.out.println("--------------------");
-        }
-    }
-
-    public void alterarCliente(int clienteId, String novoNome, String novoEndereco, String novoPostalCode,
-                               String novoPais, String novoCpf, String novoPassaporte, String novoEmail,
-                               String novaDataNascimento) {
-        for (Cliente cliente : clientes) {
-            if (cliente.id == clienteId) {
-                cliente.nome = novoNome;
-                cliente.endereco = novoEndereco;
-                cliente.postalCode = novoPostalCode;
-                cliente.pais = novoPais;
-                cliente.cpf = novoCpf;
-                cliente.passaporte = novoPassaporte;
-                cliente.email = novoEmail;
-                cliente.dataNascimento = novaDataNascimento;
-                System.out.println("Cliente alterado com sucesso.");
-                return;
-            }
-        }
-        System.out.println("Cliente não encontrado.");
-    }
-
-    public void excluirCliente(int clienteId) {
-        clientes.removeIf(cliente -> cliente.id == clienteId);
-        System.out.println("Cliente excluído com sucesso.");
-    }
-}
-
-class SistemaQuartos {
-    List<Quarto> quartos;
-
-    public SistemaQuartos() {
-        this.quartos = new ArrayList<>();
-    }
-
-    public void incluirQuarto(Quarto quarto) {
-        quartos.add(quarto);
-    }
-
-    public void listarQuartos() {
-        for (Quarto quarto : quartos) {
-            System.out.println("ID: " + quarto.id);
-            System.out.println("Nome do Quarto: " + quarto.nomeQuarto);
-            System.out.println("Quantidade de Camas: " + quarto.qtdeCamas);
-            System.out.println("Tem Banheiro: " + quarto.temBanheiro);
-            System.out.println("Descrição: " + quarto.descricao);
-            System.out.println("--------------------");
-        }
-    }
-
-    public void alterarQuarto(int quartoId, String novoNomeQuarto, int novaQtdeCamas, boolean novoTemBanheiro,
-                               String novaDescricao) {
-        for (Quarto quarto : quartos) {
-            if (quarto.id == quartoId) {
-                quarto.nomeQuarto = novoNomeQuarto;
-                quarto.qtdeCamas = novaQtdeCamas;
-                quarto.temBanheiro = novoTemBanheiro;
-                quarto.descricao = novaDescricao;
-                System.out.println("Quarto alterado com sucesso.");
-                return;
-            }
-        }
-        System.out.println("Quarto não encontrado.");
-    }
-
-    public void excluirQuarto(int quartoId) {
-        quartos.removeIf(quarto -> quarto.id == quartoId);
-        System.out.println("Quarto excluído com sucesso.");
-    }
-}
-
-class SistemaCamas {
-    List<Cama> camas;
-
-    public SistemaCamas() {
-        this.camas = new ArrayList<>();
-    }
-
-    public void incluirCama(Cama cama) {
-        camas.add(cama);
-    }
-
-    public void listarCamas() {
-        for (Cama cama : camas) {
-            System.out.println("ID: " + cama.id);
-            System.out.println("Código da Cama: " + cama.codigoCama);
-            System.out.println("Beliche: " + cama.ehBeliche);
-            System.out.println("Posição: " + cama.posicao);
-            System.out.println("Descrição: " + cama.descricao);
-            System.out.println("--------------------");
-        }
-    }
-
-    public void alterarCama(int camaId, String novoCodigoCama, boolean novoEhBeliche, String novaPosicao,
-                            String novaDescricao) {
-        for (Cama cama : camas) {
-            if (cama.id == camaId) {
-                cama.codigoCama = novoCodigoCama;
-                cama.ehBeliche = novoEhBeliche;
-                cama.posicao = novaPosicao;
-                cama.descricao = novaDescricao;
-                System.out.println("Cama alterada com sucesso.");
-                return;
-            }
-        }
-        System.out.println("Cama não encontrada.");
-    }
-
-    public void excluirCama(int camaId) {
-        camas.removeIf(cama -> cama.id == camaId);
-        System.out.println("Cama excluída com sucesso.");
-    }
-}
-
-class SistemaReservas {
-    List<Reserva> reservas;
-
-    public SistemaReservas() {
-        this.reservas = new ArrayList<>();
-    }
-
-    public void incluirReserva(Reserva reserva) {
-        reservas.add(reserva);
-    }
-
-    public void listarReservas() {
-        for (Reserva reserva : reservas) {
-            System.out.println("ID: " + reserva.id);
-            System.out.println("ID Cliente: " + reserva.idCliente);
-            System.out.println("ID Quarto: " + reserva.idQuarto);
-            System.out.println("ID Cama: " + reserva.idCama);
-            System.out.println("Data Início: " + reserva.dataInicio);
-            System.out.println("Data Fim: " + reserva.dataFim);
-            System.out.println("--------------------");
-        }
-    }
-
-    public void alterarReserva(int reservaId, int novoIdCliente, int novoIdQuarto, int novoIdCama,
-                               String novaDataInicio, String novaDataFim) {
-        for (Reserva reserva : reservas) {
-            if (reserva.id == reservaId) {
-                reserva.idCliente = novoIdCliente;
-                reserva.idQuarto = novoIdQuarto;
-                reserva.idCama = novoIdCama;
-                reserva.dataInicio = novaDataInicio;
-                reserva.dataFim = novaDataFim;
-                System.out.println("Reserva alterada com sucesso.");
-                return;
-            }
-        }
-        System.out.println("Reserva não encontrada.");
-    }
-
-    public void excluirReserva(int reservaId) {
-        reservas.removeIf(reserva -> reserva.id == reservaId);
-        System.out.println("Reserva excluída com sucesso.");
-    }
-}
-
 public class Main {
     public static void main(String[] args) {
-        SistemaClientes sistemaClientes = new SistemaClientes();
-        SistemaQuartos sistemaQuartos = new SistemaQuartos();
-        SistemaCamas sistemaCamas = new SistemaCamas();
-        SistemaReservas sistemaReservas = new SistemaReservas();
+        List<Cliente> clientes = new ArrayList<>();
+        List<Quarto> quartos = new ArrayList<>();
+        List<Cama> camas = new ArrayList<>();
+        List<Reserva> reservas = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
         int escolha = 0;
@@ -288,50 +105,290 @@ public class Main {
             System.out.println("14. Listar Reservas");
             System.out.println("15. Alterar Reserva");
             System.out.println("16. Excluir Reserva");
-            System.out.println("17. Sair");
+            System.out.println("18. Sair");
 
             escolha = scanner.nextInt();
             scanner.nextLine();
 
             switch (escolha) {
                 case 1:
-                    // ... (código existente)
+                    
+                    System.out.println("Digite o ID do cliente:");
+                    int idCliente = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.println("Digite o nome do cliente:");
+                    String nomeCliente = scanner.nextLine();
+
+                    System.out.println("Digite o endereço do cliente:");
+                    String enderecoCliente = scanner.nextLine();
+
+                    System.out.println("Digite o código postal do cliente:");
+                    String postalCodeCliente = scanner.nextLine();
+
+                    System.out.println("Digite o país do cliente:");
+                    String paisCliente = scanner.nextLine();
+
+                    System.out.println("Digite o CPF do cliente:");
+                    String cpfCliente = scanner.nextLine();
+
+                    System.out.println("Digite o passaporte do cliente:");
+                    String passaporteCliente = scanner.nextLine();
+
+                    System.out.println("Digite o e-mail do cliente:");
+                    String emailCliente = scanner.nextLine();
+
+                    System.out.println("Digite a data de nascimento do cliente:");
+                    String dataNascimentoCliente = scanner.nextLine();
+
+                    Cliente novoCliente = new Cliente(idCliente, nomeCliente, enderecoCliente, postalCodeCliente,
+                            paisCliente, cpfCliente, passaporteCliente, emailCliente, dataNascimentoCliente);
+                    clientes.add(novoCliente);
                     break;
                 case 2:
-                    // ... (código existente)
+                    
+                    for (Cliente cliente : clientes) {
+                        System.out.println("ID: " + cliente.id);
+                        System.out.println("Nome: " + cliente.nome);
+                        System.out.println("Endereço: " + cliente.endereco);
+                        System.out.println("Código Postal: " + cliente.postalCode);
+                        System.out.println("País: " + cliente.pais);
+                        System.out.println("CPF: " + cliente.cpf);
+                        System.out.println("Passaporte: " + cliente.passaporte);
+                        System.out.println("Email: " + cliente.email);
+                        System.out.println("Data de Nascimento: " + cliente.dataNascimento);
+                        System.out.println("--------------------");
+                    }
                     break;
                 case 3:
-                    // ... (código existente)
+                    
+                    System.out.println("Digite o ID do cliente que deseja alterar:");
+                    int idAlterarCliente = scanner.nextInt();
+                    scanner.nextLine();
+
+                    Cliente clienteSelecionado = null;
+
+                    for (Cliente cliente : clientes) {
+                        if (cliente.id == idAlterarCliente) {
+                            clienteSelecionado = cliente;
+                            break;
+                        }
+                    }
+
+                    if (clienteSelecionado != null) {
+                        System.out.println("Digite o novo nome do cliente:");
+                        String novoNomeCliente = scanner.nextLine();
+
+                        System.out.println("Digite o novo endereço do cliente:");
+                        String novoEnderecoCliente = scanner.nextLine();
+
+                        System.out.println("Digite o novo código postal do cliente:");
+                        String novoPostalCodeCliente = scanner.nextLine();
+
+                        System.out.println("Digite o novo país do cliente:");
+                        String novoPaisCliente = scanner.nextLine();
+
+                        System.out.println("Digite o novo CPF do cliente:");
+                        String novoCpfCliente = scanner.nextLine();
+
+                        System.out.println("Digite o novo passaporte do cliente:");
+                        String novoPassaporteCliente = scanner.nextLine();
+
+                        System.out.println("Digite o novo e-mail do cliente:");
+                        String novoEmailCliente = scanner.nextLine();
+
+                        System.out.println("Digite a nova data de nascimento do cliente:");
+                        String novaDataNascimentoCliente = scanner.nextLine();
+
+                        clienteSelecionado.nome = novoNomeCliente;
+                        clienteSelecionado.endereco = novoEnderecoCliente;
+                        clienteSelecionado.postalCode = novoPostalCodeCliente;
+                        clienteSelecionado.pais = novoPaisCliente;
+                        clienteSelecionado.cpf = novoCpfCliente;
+                        clienteSelecionado.passaporte = novoPassaporteCliente;
+                        clienteSelecionado.email = novoEmailCliente;
+                        clienteSelecionado.dataNascimento = novaDataNascimentoCliente;
+
+                        System.out.println("Cliente alterado com sucesso.");
+                    } else {
+                        System.out.println("Cliente não encontrado.");
+                    }
                     break;
                 case 4:
-                    // ... (código existente)
+                    
+                    System.out.println("Digite o ID do cliente que deseja excluir:");
+                    int idExcluirCliente = scanner.nextInt();
+                    scanner.nextLine();
+
+                    clientes.removeIf(cliente -> cliente.id == idExcluirCliente);
+                    System.out.println("Cliente excluído com sucesso.");
                     break;
                 case 5:
-                    // ... (código existente)
+                    
+                    System.out.println("Digite o ID do quarto:");
+                    int idQuarto = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.println("Digite o nome do quarto:");
+                    String nomeQuarto = scanner.nextLine();
+
+                    System.out.println("Digite a quantidade de camas no quarto:");
+                    int qtdeCamasQuarto = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.println("O quarto tem banheiro? (true/false):");
+                    boolean temBanheiroQuarto = scanner.nextBoolean();
+                    scanner.nextLine();
+
+                    System.out.println("Digite a descrição do quarto:");
+                    String descricaoQuarto = scanner.nextLine();
+
+                    Quarto novoQuarto = new Quarto(idQuarto, nomeQuarto, qtdeCamasQuarto, temBanheiroQuarto, descricaoQuarto);
+                    quartos.add(novoQuarto);
                     break;
                 case 6:
-                    // ... (código existente)
+                    
+                    for (Quarto quarto : quartos) {
+                        System.out.println("ID: " + quarto.id);
+                        System.out.println("Nome do Quarto: " + quarto.nomeQuarto);
+                        System.out.println("Quantidade de Camas: " + quarto.qtdeCamas);
+                        System.out.println("Tem Banheiro: " + quarto.temBanheiro);
+                        System.out.println("Descrição: " + quarto.descricao);
+                        System.out.println("--------------------");
+                    }
                     break;
                 case 7:
-                    // ... (código existente)
+                    
+                    System.out.println("Digite o ID do quarto que deseja alterar:");
+                    int idAlterarQuarto = scanner.nextInt();
+                    scanner.nextLine();
+
+                    Quarto quartoSelecionado = null;
+
+                    for (Quarto quarto : quartos) {
+                        if (quarto.id == idAlterarQuarto) {
+                            quartoSelecionado = quarto;
+                            break;
+                        }
+                    }
+
+                    if (quartoSelecionado != null) {
+                        System.out.println("Digite o novo nome do quarto:");
+                        String novoNomeQuarto = scanner.nextLine();
+
+                        System.out.println("Digite a nova quantidade de camas no quarto:");
+                        int novaQtdeCamasQuarto = scanner.nextInt();
+                        scanner.nextLine();
+
+                        System.out.println("O quarto tem banheiro? (true/false):");
+                         boolean novoTemBanheiroQuarto = scanner.nextBoolean();
+                        scanner.nextLine();
+
+                        System.out.println("Digite a nova descrição do quarto:");
+                        String novaDescricaoQuarto = scanner.nextLine();
+
+                        quartoSelecionado.nomeQuarto = novoNomeQuarto;
+                        quartoSelecionado.qtdeCamas = novaQtdeCamasQuarto;
+                        quartoSelecionado.temBanheiro = novoTemBanheiroQuarto;
+                        quartoSelecionado.descricao = novaDescricaoQuarto;
+
+                        System.out.println("Quarto alterado com sucesso.");
+                    } else {
+                        System.out.println("Quarto não encontrado.");
+                    }
                     break;
                 case 8:
-                    // ... (código existente)
+                    
+                    System.out.println("Digite o ID do quarto que deseja excluir:");
+                    int idExcluirQuarto = scanner.nextInt();
+                    scanner.nextLine();
+
+                    quartos.removeIf(quarto -> quarto.id == idExcluirQuarto);
+                    System.out.println("Quarto excluído com sucesso.");
                     break;
                 case 9:
-                    // ... (código existente)
+                    
+                    System.out.println("Digite o ID da cama:");
+                    int idCama = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.println("Digite o código da cama:");
+                    String codigoCama = scanner.nextLine();
+
+                    System.out.println("A cama é beliche? (true/false):");
+                    boolean ehBelicheCama = scanner.nextBoolean();
+                    scanner.nextLine();
+
+                    System.out.println("Digite a posição da cama:");
+                    String posicaoCama = scanner.nextLine();
+
+                    System.out.println("Digite a descrição da cama:");
+                    String descricaoCama = scanner.nextLine();
+
+                    Cama novaCama = new Cama(idCama, codigoCama, ehBelicheCama, posicaoCama, descricaoCama);
+                    camas.add(novaCama);
                     break;
                 case 10:
-                    // ... (código existente)
+                    
+                    for (Cama cama : camas) {
+                        System.out.println("ID: " + cama.id);
+                        System.out.println("Código da Cama: " + cama.codigoCama);
+                        System.out.println("Beliche: " + cama.ehBeliche);
+                        System.out.println("Posição: " + cama.posicao);
+                        System.out.println("Descrição: " + cama.descricao);
+                        System.out.println("--------------------");
+                    }
                     break;
                 case 11:
-                    // ... (código existente)
+                   
+                    System.out.println("Digite o ID da cama que deseja alterar:");
+                    int idAlterarCama = scanner.nextInt();
+                    scanner.nextLine();
+
+                    Cama camaSelecionada = null;
+
+                    for (Cama cama : camas) {
+                        if (cama.id == idAlterarCama) {
+                            camaSelecionada = cama;
+                            break;
+                        }
+                    }
+
+                    if (camaSelecionada != null) {
+                        System.out.println("Digite o novo código da cama:");
+                        String novoCodigoCama = scanner.nextLine();
+
+                        System.out.println("A cama é beliche? (true/false):");
+                        boolean novoEhBelicheCama = scanner.nextBoolean();
+                        scanner.nextLine();
+
+                        System.out.println("Digite a nova posição da cama:");
+                        String novaPosicaoCama = scanner.nextLine();
+
+                        System.out.println("Digite a nova descrição da cama:");
+                        String novaDescricaoCama = scanner.nextLine();
+
+                        camaSelecionada.codigoCama = novoCodigoCama;
+                        camaSelecionada.ehBeliche = novoEhBelicheCama;
+                        camaSelecionada.posicao = novaPosicaoCama;
+                        camaSelecionada.descricao = novaDescricaoCama;
+
+                        System.out.println("Cama alterada com sucesso.");
+                    } else {
+                        System.out.println("Cama não encontrada.");
+                    }
                     break;
                 case 12:
-                    // ... (código existente)
+                    
+                    System.out.println("Digite o ID da cama que deseja excluir:");
+                    int idExcluirCama = scanner.nextInt();
+                    scanner.nextLine();
+
+                    camas.removeIf(cama -> cama.id == idExcluirCama);
+                    System.out.println("Cama excluída com sucesso.");
                     break;
                 case 13:
-                    // Incluir Reserva
+                    
                     System.out.println("Digite o ID da reserva:");
                     int idReserva = scanner.nextInt();
                     scanner.nextLine();
@@ -354,58 +411,85 @@ public class Main {
                     System.out.println("Digite a data de fim:");
                     String dataFimReserva = scanner.nextLine();
 
-                    Reserva novaReserva = new Reserva(idReserva, idClienteReserva, idQuartoReserva, idCamaReserva,
-                            dataInicioReserva, dataFimReserva);
-                    sistemaReservas.incluirReserva(novaReserva);
+                    Reserva novaReserva = new Reserva(idReserva, idClienteReserva, idQuartoReserva,
+                            idCamaReserva, dataInicioReserva, dataFimReserva);
+                    reservas.add(novaReserva);
                     break;
                 case 14:
-                    sistemaReservas.listarReservas();
+                    
+                    for (Reserva reserva : reservas) {
+                        System.out.println("ID: " + reserva.id);
+                        System.out.println("ID Cliente: " + reserva.idCliente);
+                        System.out.println("ID Quarto: " + reserva.idQuarto);
+                        System.out.println("ID Cama: " + reserva.idCama);
+                        System.out.println("Data Início: " + reserva.dataInicio);
+                        System.out.println("Data Fim: " + reserva.dataFim);
+                        System.out.println("--------------------");
+                    }
                     break;
                 case 15:
-                    // Alterar Reserva
+                   
                     System.out.println("Digite o ID da reserva que deseja alterar:");
                     int idAlterarReserva = scanner.nextInt();
                     scanner.nextLine();
 
-                    System.out.println("Digite o novo ID do cliente:");
-                    int novoIdClienteReserva = scanner.nextInt();
-                    scanner.nextLine();
+                    Reserva reservaSelecionada = null;
 
-                    System.out.println("Digite o novo ID do quarto:");
-                    int novoIdQuartoReserva = scanner.nextInt();
-                    scanner.nextLine();
+                    for (Reserva reserva : reservas) {
+                        if (reserva.id == idAlterarReserva) {
+                            reservaSelecionada = reserva;
+                            break;
+                        }
+                    }
 
-                    System.out.println("Digite o novo ID da cama:");
-                    int novoIdCamaReserva = scanner.nextInt();
-                    scanner.nextLine();
+                    if (reservaSelecionada != null) {
+                        System.out.println("Digite o novo ID do cliente:");
+                        int novoIdClienteReserva = scanner.nextInt();
+                        scanner.nextLine();
 
-                    System.out.println("Digite a nova data de início:");
-                    String novaDataInicioReserva = scanner.nextLine();
+                        System.out.println("Digite o novo ID do quarto:");
+                        int novoIdQuartoReserva = scanner.nextInt();
+                        scanner.nextLine();
 
-                    System.out.println("Digite a nova data de fim:");
-                    String novaDataFimReserva = scanner.nextLine();
+                        System.out.println("Digite o novo ID da cama:");
+                        int novoIdCamaReserva = scanner.nextInt();
+                        scanner.nextLine();
 
-                    sistemaReservas.alterarReserva(idAlterarReserva, novoIdClienteReserva, novoIdQuartoReserva,
-                            novoIdCamaReserva, novaDataInicioReserva, novaDataFimReserva);
+                        System.out.println("Digite a nova data de início:");
+                        String novaDataInicioReserva = scanner.nextLine();
+
+                        System.out.println("Digite a nova data de fim:");
+                        String novaDataFimReserva = scanner.nextLine();
+
+                        reservaSelecionada.idCliente = novoIdClienteReserva;
+                        reservaSelecionada.idQuarto = novoIdQuartoReserva;
+                        reservaSelecionada.idCama = novoIdCamaReserva;
+                        reservaSelecionada.dataInicio = novaDataInicioReserva;
+                        reservaSelecionada.dataFim = novaDataFimReserva;
+
+                        System.out.println("Reserva alterada com sucesso.");
+                    } else {
+                        System.out.println("Reserva não encontrada.");
+                    }
                     break;
                 case 16:
-                    // Excluir Reserva
+                    
                     System.out.println("Digite o ID da reserva que deseja excluir:");
                     int idExcluirReserva = scanner.nextInt();
                     scanner.nextLine();
 
-                    sistemaReservas.excluirReserva(idExcluirReserva);
+                    reservas.removeIf(reserva -> reserva.id == idExcluirReserva);
+                    System.out.println("Reserva excluída com sucesso.");
                     break;
-                 case 17:
-                                    // ... (código existente)
-                                    break;
-                                case 18:
-                                    System.out.println("Saindo do programa. Até logo!");
-                                    break;
-                                default:
-                                    System.out.println("Opção inválida. Tente novamente.");
-                            }
-                        }
-                        scanner.close();
-                    }
-                }
+                case 18:
+                    
+                    System.out.println("Sistema encerrado.");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
+
+        scanner.close();
+    }
+}
